@@ -2,3 +2,5 @@
 /gRpc/grpc-server
 .idea/
 go.sum
+main
+go-kit/rpc-server

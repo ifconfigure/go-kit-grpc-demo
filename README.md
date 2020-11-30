@@ -1,6 +1,7 @@
 ### 安装
 >git clone https://github.com/ifconfigure/go-kit-grpc-demo.git
->go mod tidy  && go mod download
+
+>>go mod tidy  && go mod download
 ---
 
 ### 简介
@@ -66,6 +67,7 @@
 
 │   ├── Service
 `这里可以单独写grpc里的业务逻辑，是和go-kit分开的，如果在go-kit的endpoint写了业务就不用在这里写，当然也可以在这里写业务通过endpoint调用`
+
 ├── main.go
 `暂无用`
 

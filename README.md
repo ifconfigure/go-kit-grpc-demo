@@ -1,6 +1,6 @@
 ### 安装
 >git clone https://github.com/ifconfigure/go-kit-grpc-demo.git
-
+>go mod tidy  && go mod download
 ---
 
 ### 简介

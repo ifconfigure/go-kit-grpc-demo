@@ -20,7 +20,7 @@ import (
 
 func main() {
 	//初始化jaeger
-	servOpts := util.InitGrpcJaeger()
+	servOpts := util.InitGrpcServerJaeger()
 	bookServiceHandler := Handler.BookServiceHandler()
 	serviceAddress := ":8972"
 	ls, _ := net.Listen("tcp", serviceAddress)

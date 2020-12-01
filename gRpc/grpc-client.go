@@ -4,16 +4,21 @@ import (
 	"context"
 	"fmt"
 	Book "go-kit-gRpc-learn/gRpc/PB"
+	"go-kit-gRpc-learn/util"
 	"google.golang.org/grpc"
 )
 
-func main()  {
+func main() {
+	//开启客户端并连接数据链路
 	serviceAddress := "127.0.0.1:8972"
-	conn, err := grpc.Dial(serviceAddress, grpc.WithInsecure())
+	dialOpt := util.InitGrpcClientJaeger()
+	conn, err := grpc.Dial(serviceAddress, dialOpt...)
 	if err != nil {
 		panic("connect error")
 	}
 	defer conn.Close()
+
+	//服务调用
 	bookClient := Book.NewBookServiceClient(conn)
 	bi, _ := bookClient.GetBookInfo(context.Background(), &Book.BookInfoParams{BookId: 1})
 	fmt.Print("获取书籍信息:\t")

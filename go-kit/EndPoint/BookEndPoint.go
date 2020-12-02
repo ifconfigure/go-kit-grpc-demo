@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/go-kit/kit/endpoint"
 	Book "go-kit-gRpc-learn/gRpc/PB"
+	"go-kit-gRpc-learn/gRpc/Service"
 )
 
 //创建bookList的EndPoint
@@ -23,9 +24,13 @@ func MakeGetBookInfoEndpoint() endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
 		//请求详情时返回 书籍信息
 		req := request.(*Book.BookInfoParams)
-		b := new(Book.BookInfo)
-		b.BookId = req.BookId
-		b.BookName = "Go与微服务"
+		//b := new(Book.BookInfo)
+		//b.BookId = req.BookId
+		//b.BookName = "Go与微服务"
+		//return b, nil
+
+		a := Service.BookService{}
+		b, _ := a.GetBookInfo(ctx, req)
 		return b, nil
 	}
 }

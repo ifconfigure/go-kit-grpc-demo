@@ -1,5 +1,4 @@
-# 拉取 Go 语言最新的基础镜像
-FROM golang:latest
+FROM golang:alpine as builder
 
 #设置环境变量
 ENV GO111MODULE=on \
@@ -16,6 +15,9 @@ ENV GOPROXY="https://goproxy.cn"
 # 编译项目
 RUN go build -o ./bin/rpc-server ./go-kit/rpc-server.go
 
-EXPOSE 8972
-
-ENTRYPOINT ["./bin/rpc-server"]
+#多段构建
+FROM alpine:latest
+WORKDIR /root/
+COPY --from=builder /app/bin/rpc-server .
+RUN chmod +x /root/rpc-server
+ENTRYPOINT ["/root/rpc-server"]

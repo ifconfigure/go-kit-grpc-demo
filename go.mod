@@ -4,6 +4,7 @@ go 1.15
 
 require (
 	github.com/HdrHistogram/hdrhistogram-go v1.0.1 // indirect
+	github.com/fullstorydev/grpcui v1.1.0 // indirect
 	github.com/go-kit/kit v0.10.0
 	github.com/golang/protobuf v1.4.3
 	github.com/moxiaomomo/grpc-jaeger v0.0.0-20180617090213-05b879580c4a
